@@ -13,12 +13,12 @@
 </head>
 <body>
 
-<form method="post" action="/StudController">
-    id: <input type="text" readonly value="${student.id}">
-    first name: <input type="text" value="${student.firstname}">
-    last name: <input type="text" value="${student.lastname}">
-    tel : <input type="text" value="${student.tel}">
-    dob: <input type="date" <fmt:formatDate pattern="yyyy-MM-dd" value="${student.dob}"/>>
+<form method="POST" action="/StudentController">
+    id: <input name="studId" type="text" readonly value="${student.id}"><br>
+    first name: <input name="firstname" type="text" value="${student.firstname}"><br>
+    last name: <input name="lastname" type="text" value="${student.lastname}"><br>
+    tel : <input name="tel" type="text" value="${student.tel}"><br>
+    dob: <input name="dob" type="date" <fmt:formatDate pattern="yyyy-MM-dd" value="${student.dob}"/>><br>
     <input type="submit" value="ok">
 </form>
 </body>

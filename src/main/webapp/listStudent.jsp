@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<table border="2">
+<table border="1">
 
     <thead>
     <tr>
@@ -28,23 +28,23 @@
 
     </tr>
     </thead>
-    //цикл
+    <tbody>
     <c:forEach items="${students}" var="temp">
 
 
-    <tr>
-        <td><c:out value="${temp.id}"/></td>
-        <td><c:out value="${temp.firstname}"/></td>
-        <td><c:out value="${temp.lastname}"/></td>
-        <td><c:out value="${temp.tel}"/></td>
-        <td><fmt:formatDate pattern="yyyy-MM-dd" value="${temp.dob}"/></td>
-        <td><a href="/StudentController?action=delete&studId=${temp.id}">Delete</a></td>
-        <td><a href="/StudentController?action=edit&studId=${temp.id}">Edit</a></td>
+        <tr>
+            <td><c:out value="${temp.id}"/></td>
+            <td><c:out value="${temp.firstname}"/></td>
+            <td><c:out value="${temp.lastname}"/></td>
+            <td><c:out value="${temp.tel}"/></td>
+            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${temp.dob}"/></td>
+            <td><a href="/StudentController?action=delete&studId=${temp.id}">Delete</a></td>
+            <td><a href="/StudentController?action=edit&studId=${temp.id}">Edit</a></td>
+            <td><a href="/BookController?action=list&studId=${temp.id}">List Book</a></td>
 
-
-    </tr>
+        </tr>
     </c:forEach>
-
+    </tbody>
 </table>
 <p><a href="/StudentController?action=create">Create Stud</a></p>
 

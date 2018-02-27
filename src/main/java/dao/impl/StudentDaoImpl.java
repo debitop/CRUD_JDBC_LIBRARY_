@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentDaoImpl implements StudentDao{
+public class StudentDaoImpl implements StudentDao {
     private Connection connection;
 
     public StudentDaoImpl() {
@@ -22,7 +22,7 @@ public class StudentDaoImpl implements StudentDao{
             ps.setString(1, student.getFirstname());
             ps.setString(2, student.getLastname());
             ps.setString(3, student.getTel());
-            ps.setDate(4, (Date) student.getDob());
+            ps.setDate(4, new Date(student.getDob().getTime()));
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,7 +50,7 @@ public class StudentDaoImpl implements StudentDao{
             ps.setString(1, student.getFirstname());
             ps.setString(2, student.getLastname());
             ps.setString(3, student.getTel());
-            ps.setDate(4, (Date) student.getDob());
+            ps.setDate(4, new Date(student.getDob().getTime()));
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,14 +59,15 @@ public class StudentDaoImpl implements StudentDao{
 
     ;
 
-    public List listStudent() {
+    public List<Student> listStudent() {
         List<Student> list = new ArrayList<Student>();
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM students");
             while (rs.next()) {
                 Student student = new Student();
-                student.setFirstname(rs.getString("firsname"));
+                student.setId(rs.getInt("id"));
+                student.setFirstname(rs.getString("firstname"));
                 student.setLastname(rs.getString("lastname"));
                 student.setTel(rs.getString("tel"));
                 student.setDob(rs.getDate("dob"));
@@ -89,11 +90,14 @@ public class StudentDaoImpl implements StudentDao{
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM students WHERE id=?");
             ps.setInt(1, studid);
             ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                student.setId(studid);
+                student.setFirstname(rs.getString("firstname"));
+                student.setLastname(rs.getString("lastname"));
+                student.setTel(rs.getString("tel"));
+                student.setDob(rs.getDate("dob"));
+            }
 
-            student.setFirstname(rs.getString("firsname"));
-            student.setLastname(rs.getString("lastname"));
-            student.setTel(rs.getString("tel"));
-            student.setDob(rs.getDate("dob"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

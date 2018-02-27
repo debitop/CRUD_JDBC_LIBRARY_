@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="CRUD_JDBC_LIBRARY" target="1.5" />
-      <module name="CRUD_JDBC_LIBRARY_" target="1.5" />
+      <module name="CRUD_JDBC_LIBRARY_" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

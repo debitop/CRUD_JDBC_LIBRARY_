@@ -5,7 +5,7 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>StudController</servlet-name>
+        <servlet-name>StudentController</servlet-name>
         <servlet-class>controller.StudentController</servlet-class>
     </servlet>
     <servlet>
@@ -18,8 +18,8 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>StudController</servlet-name>
-        <url-pattern>/StudController</url-pattern>
+        <servlet-name>StudentController</servlet-name>
+        <url-pattern>/StudentController</url-pattern>
     </servlet-mapping>
 
 

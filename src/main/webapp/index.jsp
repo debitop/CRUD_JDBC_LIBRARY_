@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-
+<jsp:forward page="/StudentController?action=list"></jsp:forward>
 </body>
 </html>

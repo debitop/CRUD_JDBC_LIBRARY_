@@ -12,7 +12,7 @@ CREATE TABLE students(
   firstname VARCHAR(255) NOt NULL,
   lastname VARCHAR(255) NOt NULL,
   tel VARCHAR(255) NOt NULL,
-  dob DATE
+  dob DATE DEFAULT NULL
 );
 
 CREATE TABLE books(

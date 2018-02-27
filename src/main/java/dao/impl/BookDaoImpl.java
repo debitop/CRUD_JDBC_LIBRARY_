@@ -66,7 +66,9 @@ public class BookDaoImpl implements BookDao {
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+
                 Book book = new Book();
+                book.setId(rs.getInt("id"));
                 book.setUserid(rs.getInt("userid"));
                 book.setAuthor(rs.getString("author"));
                 book.setTitle(rs.getString("title"));
