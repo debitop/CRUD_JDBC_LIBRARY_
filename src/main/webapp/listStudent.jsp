@@ -30,8 +30,6 @@
     </thead>
     <tbody>
     <c:forEach items="${students}" var="temp">
-
-
         <tr>
             <td><c:out value="${temp.id}"/></td>
             <td><c:out value="${temp.firstname}"/></td>
@@ -41,7 +39,6 @@
             <td><a href="/StudentController?action=delete&studId=${temp.id}">Delete</a></td>
             <td><a href="/StudentController?action=edit&studId=${temp.id}">Edit</a></td>
             <td><a href="/BookController?action=list&studId=${temp.id}">List Book</a></td>
-
         </tr>
     </c:forEach>
     </tbody>
