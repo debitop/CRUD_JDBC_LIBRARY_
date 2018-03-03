@@ -33,7 +33,7 @@
 </c:forEach>
 </table>
 
-<a href="/BookController?action=create&studId=${temp.userid}">Create Book</a>
-<a href="/StudentController?action=list&studId=${temp.userid}">Students</a>
+<a href="/BookController?action=create&studId=${studId}">Create Book</a>
+<a href="/StudentController?action=list">Students</a>
 </body>
 </html>

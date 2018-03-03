@@ -46,10 +46,11 @@ public class BookDaoImpl implements BookDao {
 
     public void editBook(Book book) {
         try {
-            PreparedStatement ps = connection.prepareStatement("UPDATE books SET userid=?,author=?,title=?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE books SET userid=?,author=?,title=? WHERE id=?");
             ps.setInt(1, book.getUserid());
             ps.setString(2, book.getAuthor());
             ps.setString(3, book.getTitle());
+            ps.setInt(4, book.getId());
             ps.execute();
 
         } catch (SQLException e) {
@@ -83,20 +84,24 @@ public class BookDaoImpl implements BookDao {
 
     ;
 
-    public Book getBookById(int bookid){
+    public Book getBookById(int bookid) {
         Book book = new Book();
         try {
             PreparedStatement ps = connection.prepareStatement("SELECT * FROM books WHERE id=?");
-            ps.setInt(1,bookid);
-            ResultSet rs=ps.executeQuery();
-            book.setUserid(rs.getInt("userid"));
-            book.setAuthor(rs.getString("author"));
-            book.setTitle(rs.getString("title"));
-
+            ps.setInt(1, bookid);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                book.setId(bookid);
+                book.setUserid(rs.getInt("userid"));
+                book.setAuthor(rs.getString("author"));
+                book.setTitle(rs.getString("title"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return book;
-    };
+    }
+
+    ;
 }

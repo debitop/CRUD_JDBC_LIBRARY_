@@ -14,7 +14,7 @@
 
 <form method="POST" action="/BookController">
     bookId: <input name="bookId" type="text" readonly value="${book.id}"><br>
-    userId: <input name="userId" type="text" value="${book.userid}"><br>
+    userId: <input name="studId" type="text" readonly value="${studId}"><br>
     author: <input name="author" type="text" value="${book.author}"><br>
     title : <input name="title" type="text" value="${book.title}"><br>
         <input type="submit" value="ok">

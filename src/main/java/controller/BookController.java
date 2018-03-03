@@ -28,6 +28,7 @@ public class BookController extends HttpServlet {
 
         if (action.equalsIgnoreCase(LIST.name())) {
             int studId = Integer.parseInt(req.getParameter("studId"));
+            req.setAttribute("studId", studId);
             req.setAttribute("books", bookDao.listBookById(studId));
             view = LIST_BOOK;
         } else if (action.equalsIgnoreCase(DELETE.name())) {
@@ -44,12 +45,11 @@ public class BookController extends HttpServlet {
             int studId = Integer.parseInt(req.getParameter("studId"));
             int bookId = Integer.parseInt(req.getParameter("bookId"));
             Book book = bookDao.getBookById(bookId);
-            book.setUserid(studId);
             req.setAttribute("book", book);
+            req.setAttribute("studId", studId);
             view = EDIT_BOOK;
-
         }
-req.getRequestDispatcher(view).forward(req,resp);
+        req.getRequestDispatcher(view).forward(req, resp);
     }
 
     @Override
@@ -67,7 +67,7 @@ req.getRequestDispatcher(view).forward(req,resp);
             book.setId(Integer.parseInt(bookId));
             bookDao.editBook(book);
         }
-        req.setAttribute("books",bookDao.listBookById(Integer.parseInt(studId)));
-        req.getRequestDispatcher(LIST_BOOK).forward(req,resp);
+        req.setAttribute("books", bookDao.listBookById(Integer.parseInt(studId)));
+        req.getRequestDispatcher(LIST_BOOK).forward(req, resp);
     }
 }
